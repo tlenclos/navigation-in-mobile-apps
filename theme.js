@@ -40,5 +40,8 @@ export default {
   inlineCode: {
     color: "blue"
   },
+  ul: {
+    lineHeight: "1.5"
+  },
   Provider
 };

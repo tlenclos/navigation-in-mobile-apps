@@ -1,0 +1,548 @@
+import customTheme from "./theme";
+import { Image, Notes } from "mdx-deck";
+import { Appear } from "@mdx-deck/components";
+import { Invert, Split, Horizontal } from "@mdx-deck/layouts";
+import { syntaxHighlighterPrism } from "mdx-deck/themes";
+
+export const themes = [syntaxHighlighterPrism, customTheme];
+
+<Image src="assets/romandie-beer.png" size="contain" />
+
+---
+
+# Thanks to our sponsor
+
+<Image src="assets/liip.png" size="contains" style={{ height: "300px" }} />
+
+---
+
+# Next events
+
+MRB #18 - June
+WWDC 2019 Livestream
+
+MRB #19 - September
+Flutter
+
+MRB #20 - October
+LeShop
+
+---
+
+# Job offers
+
+<strong>QoQa</strong>
+
+- Senior iOS Developer
+
+---
+
+<Image
+  src="assets/ship-wheel.jpg"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+    backgroundColor: "black",
+    flexDirection: "column"
+  }}
+>
+
+# Navigation in mobile apps
+
+Focused on React Native solutions
+
+</Image>
+
+---
+
+## About Me
+
+- Thibault Lenclos, <Image src="https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/600px-Twitter_Bird.svg.png" style={{ width: "1em", height: "1em", display: "inline-block", backgroundPosition: "bottom" }} size="contain" /> [@thibz](https://twitter.com/thibz)
+- React+Native developer at [Premier Octet](http://premieroctet.com)
+- 👨🏻‍💻 🎸 👾
+
+---
+
+## What I love on mobile
+
+- Scope is often smaller than on web
+- UI simplicity
+- Lots of API and languages
+- You can physically handle what you code
+
+---
+
+<Invert>
+
+## What I find hard on mobile
+
+  <ul>
+    <li>Animation</li>
+    <li>User interaction</li>
+    <li>Performance</li>
+    <Appear>
+      <li>
+        <strong>Navigation (which is using all of the above 😅)</strong>
+      </li>
+    </Appear>
+  </ul>
+</Invert>
+
+---
+
+## Different types of Navigation
+
+<Split>
+
+<div>
+  Hierarchical
+
+<Image
+  src={
+    "https://developer.apple.com/design/human-interface-guidelines/ios/images/NavigationHierarchical-Graphic_2x.png"
+  }
+  style={{ height: 200, width: 200, margin: "auto" }}
+  size="contain"
+/>
+
+</div>
+
+<div>
+  Flat
+
+  <Image
+    src={
+      "https://developer.apple.com/design/human-interface-guidelines/ios/images/NavigationFlat-Graphic_2x.png"
+    }
+  style={{ height: 200, width: 200, margin: "auto" }}
+    size="contain"
+  />
+</div>
+
+</Split>
+
+---
+
+## Guidelines for each OS
+
+Try to respect them as closely as possible
+
+- 🍏 [iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/)
+
+- 🤖 [Android](https://material.io/design/navigation/understanding-navigation.html)
+
+---
+
+## A clear path
+
+- The path must be logical, predictable and easy to access
+- One path for one screen
+- If multiple context exist for one screen, prefer modals
+
+---
+
+## Stay standard
+
+- Don't lost the user with fancy navigations
+- Use navigation components provided by the OS
+  - Segmented controls for iOS or Drawer for Android
+- Use tab bars to regroup functionnalities or content
+
+---
+
+## Navigation flows
+
+- Login & register
+- Drawer (left, right)
+- Tabs
+- List ➡️ Detail
+- Modal & Dialog
+- Logout
+- Deep linking
+- App linking
+
+---
+
+<Split>
+
+## Create a navigation graph
+
+<Image
+  src="https://i.imgur.com/RHRQyL2.png"
+  style={{ width: "600px", backgroundPosition: "right" }}
+  size="contain"
+  height="80vh"
+/>
+
+</Split>
+
+---
+
+## Learn from others
+
+- See the different navigation patterns on other apps
+  - App/Play store, Facebook, Spotify
+  - Or any apps you like really 😇
+  - Tabs, drawers and search are everywhere !
+
+---
+
+<video controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
+  <source src="assets/example-ios-settings.webm" type="video/webm" />
+</video>
+
+<Notes>iOS settings, with search, list navigation and modals</Notes>
+
+---
+
+<video controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
+  <source src="assets/google-play-example.mp4" type="video/mp4" />
+</video>
+
+<Notes>Google play, 2 tabs level, drawer, slide/fade transitions</Notes>
+
+---
+
+<video controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
+  <source src="assets/spotify-example.mp4" type="video/mp4" />
+</video>
+
+<Notes>
+  Spotify with tabs, history like navigation, very brief fade animation
+</Notes>
+
+---
+
+## How it works on Android
+
+- Activity (screen)
+- Fragments (screen or part of)
+- NavController with a NavGraph
+
+---
+
+## How it works on iOS
+
+- Navigation Controller
+- Embeds other view controllers
+
+---
+
+## React Native ?
+
+- Native app with a JavaScript runtime (JSCore)
+- SDK exposing native API to developers
+- Bridge to link the native ecosystem with userland JavaScript code
+
+<Image
+  src={"assets/react-native-architecture.png"}
+  height="200px"
+  width="auto"
+  size="contain"
+/>
+
+---
+
+<Invert>
+
+## Navigation in React Native
+
+Lot of choices
+
+- [react-navigation](https://reactnavigation.org/)
+- [react-native-navigation](https://github.com/wix/react-native-navigation)
+- Others but not really used or maintained :
+  - react-router
+  - native-navigation (AirBnb)
+  - react-native-router-flux
+
+</Invert>
+
+---
+
+## RNN vs React Navigation (1/2)
+
+React Native Navigation
+
+- Native implementation with a JavaScript API
+- Creates a react app for each screen
+- Needs some native code to install
+- Backed by Wix
+
+<Notes>
+  Since each screen is native and navbar, drawers, tabs are natives. They are
+  all displayed instantly while the React part has a small delay (render time)
+</Notes>
+
+---
+
+## RNN vs React Navigation (2/2)
+
+React Navigation
+
+- JavaScript implementation
+- Used to have performance issues
+- Better now with
+
+  [react-native-screens](https://github.com/kmagiera/react-native-screens), [react-native-reanimated](https://github.com/kmagiera/react-native-reanimated) and [react-native-gesture-handler](https://github.com/kmagiera/react-native-gesture-handler)
+
+- Contributors from RN and Expo core devs
+- [In depth comparison from Brent Vatne](https://www.youtube.com/watch?v=GBhdooVxX6Q)
+
+<Notes>
+
+- full customization
+- use your own components
+- blocking the JS thread will block the navigation
+
+</Notes>
+
+---
+
+## What do I use ?
+
+🤔 IMHO React Navigation is the best option
+
+☝️ Go with RNN if you want to stay as close as possible with the OS implementation.
+
+---
+
+## React Navigation Playground
+
+<video controls autoPlay loop style={{ height: "75vh", width: "100%" }}>
+  <source src="assets/react-navigation-playground.mp4" type="video/mp4" />
+</video>
+
+---
+
+## Stack navigators
+
+<svg
+  x="0px"
+  y="0px"
+  viewBox="0 0 54.95 53.3"
+  dataRadium="true"
+  style={{
+    margin: "auto",
+    fill: "black",
+    width: "100%",
+    height: "200px",
+    transformOrigin: "center center"
+  }}
+>
+  <path d="M45.3,21.12l9.66-5.52L27.48,0L0,15.6l9.66,5.52L0,26.6l9.66,5.52L0,37.6l27.48,15.7l27.48-15.7l-9.66-5.48  l9.66-5.52L45.3,21.12z M27.48,2.3l23.44,13.31L27.48,29L4.04,15.61L27.48,2.3z M11.67,22.27l15.8,9.03l15.8-9.03l7.63,4.33  L27.48,40L4.04,26.61L11.67,22.27z M50.91,37.61L27.48,51L4.04,37.61l7.63-4.33l15.8,9.03l15.8-9.03L50.91,37.61z" />
+</svg>
+
+- Handle a stack of screens with transitions
+- API Similar to the web history (push, back, replace, go)
+
+---
+
+```js
+createStackNavigator({
+  // For each screen that you can navigate to, create a new entry like this:
+  Profile: {
+    // `ProfileScreen` is a React component that will be the main content of the screen.
+    screen: ProfileScreen,
+    // When `ProfileScreen` is loaded by the StackNavigator, it will be given a `navigation` prop.
+
+    // Optional: When deep linking or using react-navigation in a web app, this path is used:
+    path: "people/:name"
+    // The action and route params are extracted from the path.
+  },
+
+  ...MyOtherRoutes
+});
+```
+
+---
+
+## What is a screen ?
+
+```tsx
+interface NavScreenProps {
+  navigation: NavigationScreenProp<NavigationState>;
+}
+
+class MyNavScreen extends React.Component<MyNavScreenProps> {
+  render() {
+    const { navigation } = this.props;
+    const { push, replace, popToTop, pop, dismiss } = navigation;
+    return (
+      <View>
+        <Button title="Go to Profile" onPress={() => push("Profile")} />
+      </View>
+    );
+  }
+}
+```
+
+<Notes>A simple component that receives navigation prop</Notes>
+
+---
+
+## Tab navigators
+
+<svg
+  x="0px"
+  y="0px"
+  viewBox="0 0 60 60"
+  data-radium="true"
+  style={{
+    margin: "auto",
+    fill: "black",
+    width: "100%",
+    height: "200px",
+    transformOrigin: "center center"
+  }}
+>
+  <path d="M53,14V7h-7V0H0v34h7v7h7v7h46V14H53z M2,32V2h42v5H7v25H2z M9,39v-5V9h37h5v5H14v25H9z M58,46H16v-5V16h37  h5V46z" />
+</svg>
+
+- Handle multiple screens in Tabs
+- Usually each tab has a separate navigation stack
+
+---
+
+## Tab navigators
+
+```jsx
+import React from "react";
+import { Text, View } from "react-native";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+
+const HomeScreen = () => <Text>Home!</Text>;
+const SettingsScreen = () => <Text>Settings!</Text>;
+
+const TabNavigator = createBottomTabNavigator(
+  {
+    Home: HomeScreen,
+    Settings: SettingsScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        // You can return any component that you like here!
+        return <IconComponent name={routeName} size={25} color={tintColor} />;
+      }
+    }),
+    tabBarOptions: {
+      activeTintColor: "tomato",
+      inactiveTintColor: "gray"
+    }
+  }
+);
+
+export default createAppContainer(TabNavigator);
+```
+
+---
+
+## Nesting navigators
+
+```jsx
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+  Details: DetailsScreen
+});
+
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen,
+  Profile: ProfileScreen
+});
+
+const TabNavigator = createBottomTabNavigator({
+  Home: HomeStack,
+  Settings: SettingsStack
+});
+```
+
+---
+
+## Drawer navigator
+
+```jsx
+const HomeScreen = () => <Text>Home!</Text>;
+HomeScreen.navigationOptions = {
+  drawerLabel: "Home",
+  drawerIcon: ({ tintColor }) => <Image source={require("./home-icon.png")} />
+};
+
+const SettingsScreen = () => <Text>Settings!</Text>;
+SettingsScreen.navigationOptions = {
+  drawerLabel: "Settings",
+  drawerIcon: ({ tintColor }) => (
+    <Image source={require("./settings-icon.png")} />
+  )
+};
+
+const MyDrawerNavigator = createDrawerNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Settings: {
+    screen: Settings
+  }
+});
+
+const MyApp = createAppContainer(MyDrawerNavigator);
+```
+
+---
+
+## With Redux
+
+<video controls autoPlay loop style={{ height: "600px" }}>
+  <source src="assets/redux-navigation.webm" type="video/webm" />
+</video>
+
+<Notes>- Not recommended as it can cause performance issues</Notes>
+
+---
+
+## Collapsible header
+
+- Save screen space by hiding the header
+- [react-navigation-collapsible](https://github.com/benevbright/react-navigation-collapsible)
+
+<Image
+  src="https://github.com/benevbright/react-navigation-collapsible/raw/master/docs/demo.gif?raw=true"
+  size="contain"
+  style={{ height: "44vh", width: "80vh", margin: "auto" }}
+/>
+
+---
+
+## Shared transitions
+
+<Horizontal>
+
+- Visual connection between screens via motion and transformation
+- [react-navigation-fluid-transitions](https://github.com/fram-x/fluidtransitions)
+- Creates a custom navigator
+- use Transition component to morph the UI
+
+<Image
+  src="https://github.com/fram-x/FluidTransitions/raw/develop/docs/example.gif"
+  style={{ width: "24vw", height: "60vh", margin: "auto" }}
+  size="contain"
+/>
+
+</Horizontal>
+
+---
+
+## Thanks !
+
+[@thibz](https://twitter.com/thibz)
+
+<svg viewBox="0 0 445.4 142.49" style={{ height: "100px" }}>
+  <path d="M23.24 6.87L5.95 21.21v28.45h28.44v84.48h28.45l17.3-14.34V6.87h-56.9zm1.62 4.5h46.95l-11.87 9.84H13zm33.48 118.27H38.89V45.16H10.44V25.71h47.9v103.93zM190.23 24.9a15.86 15.86 0 0 1 6.09 6.67 21.93 21.93 0 0 1 2.16 9.93 21.4 21.4 0 0 1-2.12 9.75 15.7 15.7 0 0 1-6 6.54 17.12 17.12 0 0 1-9 2.33 15.13 15.13 0 0 1-6.81-1.47 13.7 13.7 0 0 1-5-4.28V73H159V22.88h10.54v5.41a13.14 13.14 0 0 1 5-4.28 14.83 14.83 0 0 1 6.67-1.47 17.3 17.3 0 0 1 9.02 2.36zm-5 23.61a10.64 10.64 0 0 0 2.53-7.36 10.54 10.54 0 0 0-2.53-7.29A8.38 8.38 0 0 0 178.7 31a8.49 8.49 0 0 0-6.6 2.84 10.45 10.45 0 0 0-2.57 7.29 10.53 10.53 0 0 0 2.57 7.39 8.54 8.54 0 0 0 6.6 2.8 8.38 8.38 0 0 0 6.57-2.81zm37.82-24.19a14.62 14.62 0 0 1 7.18-1.85v9.93a14.5 14.5 0 0 0-1.64-.07A10.87 10.87 0 0 0 220.9 35a9.11 9.11 0 0 0-2.84 7v17.71h-10.55V22.88h10.54v6.64a13.4 13.4 0 0 1 5-5.2zm44.32 3.35Q272 32.81 272 42c0 1.09 0 1.94-.07 2.53H245.5a9.35 9.35 0 0 0 9.5 7.37 13 13 0 0 0 5-1 13.24 13.24 0 0 0 4.32-2.9l5.54 5.61a18.61 18.61 0 0 1-6.81 4.83 22.93 22.93 0 0 1-8.93 1.67A21.22 21.22 0 0 1 244 57.79a16.31 16.31 0 0 1-6.71-6.57 19.77 19.77 0 0 1-2.36-9.79 19.91 19.91 0 0 1 2.39-9.89A16.78 16.78 0 0 1 244 24.9a20.19 20.19 0 0 1 9.85-2.36q8.9 0 13.52 5.13zm-5.31 10.61a8.34 8.34 0 0 0-2.33-5.82 7.86 7.86 0 0 0-5.82-2.19 8 8 0 0 0-5.71 2.15 10 10 0 0 0-2.91 5.85h16.77zm77.31-12.01q3.63 3.8 3.63 10.3v23.14h-10.51V39.65a7.65 7.65 0 0 0-1.92-5.54 6.9 6.9 0 0 0-5.2-2 7.57 7.57 0 0 0-6 2.67 10.06 10.06 0 0 0-2.19 6.71v18.2h-10.42V39.65a7.78 7.78 0 0 0-1.88-5.51 6.74 6.74 0 0 0-5.17-2 7.67 7.67 0 0 0-6 2.67 10 10 0 0 0-2.23 6.71v18.2H281V22.88h10.54v6.37q3.83-6.64 12.46-6.78a13.51 13.51 0 0 1 7.87 2.22 12.08 12.08 0 0 1 4.54 6.31 13.32 13.32 0 0 1 5.17-6.3 15.42 15.42 0 0 1 8.11-2.19 12.69 12.69 0 0 1 9.68 3.76zm24.1-18.1a5.82 5.82 0 0 1 1.61 4.24 5.83 5.83 0 0 1-1.61 4.25 5.56 5.56 0 0 1-4.14 1.64 5.39 5.39 0 0 1-4.07-1.68 5.83 5.83 0 0 1-1.61-4.21 5.8 5.8 0 0 1 1.61-4.24 5.46 5.46 0 0 1 4.07-1.65 5.54 5.54 0 0 1 4.14 1.65zm-9.35 14.71h10.54v36.83h-10.54V22.88zm52.05 4.79q4.62 5.13 4.62 14.31c0 1.09 0 1.94-.07 2.53H384.3a9.35 9.35 0 0 0 9.51 7.39 13 13 0 0 0 5-1 13.24 13.24 0 0 0 4.32-2.9l5.54 5.61a18.61 18.61 0 0 1-6.81 4.83 22.93 22.93 0 0 1-8.93 1.67 21.22 21.22 0 0 1-10.16-2.33 16.31 16.31 0 0 1-6.71-6.57 19.77 19.77 0 0 1-2.36-9.79 19.91 19.91 0 0 1 2.39-9.89 16.78 16.78 0 0 1 6.71-6.64 20.19 20.19 0 0 1 9.85-2.36q8.9.01 13.52 5.14zm-5.31 10.61a8.34 8.34 0 0 0-2.33-5.82 7.86 7.86 0 0 0-5.82-2.19 8 8 0 0 0-5.71 2.16 10 10 0 0 0-2.91 5.85h16.77zm34.43-13.96a14.62 14.62 0 0 1 7.18-1.85v9.93a14.5 14.5 0 0 0-1.64-.07 10.87 10.87 0 0 0-7.7 2.64 9.11 9.11 0 0 0-2.84 7v17.74h-10.54V22.88h10.55v6.64a13.4 13.4 0 0 1 4.99-5.2zM182.5 99.19a16.79 16.79 0 0 1 6.95 6.57 20.87 20.87 0 0 1 0 19.68 17 17 0 0 1-6.95 6.64 23.83 23.83 0 0 1-20.67 0 17 17 0 0 1-6.95-6.64 20.87 20.87 0 0 1 0-19.68 16.82 16.82 0 0 1 6.95-6.57 24.13 24.13 0 0 1 20.67 0zm-17 9.24a11.73 11.73 0 0 0 0 14.65 9.26 9.26 0 0 0 13.28 0 11.73 11.73 0 0 0 0-14.65 9.26 9.26 0 0 0-13.25 0zm51.8-2.6a8.4 8.4 0 0 0-6.47 2.7 10.12 10.12 0 0 0-2.5 7.15 10.46 10.46 0 0 0 2.46 7.22 8 8 0 0 0 6.3 2.77q5.75 0 8.56-4.31l7.25 4.93a15.59 15.59 0 0 1-6.54 6 21.52 21.52 0 0 1-9.82 2.12 20 20 0 0 1-9.79-2.33 16.48 16.48 0 0 1-6.6-6.57 19.77 19.77 0 0 1-2.36-9.79 20.12 20.12 0 0 1 2.36-9.89 16.63 16.63 0 0 1 6.64-6.64 20.16 20.16 0 0 1 9.89-2.36 21 21 0 0 1 9.38 2 16.46 16.46 0 0 1 6.57 5.71l-7.12 5.13a10 10 0 0 0-8.21-3.84zM264.32 132a17.19 17.19 0 0 1-4.55 1.88 19.89 19.89 0 0 1-5 .65 11.9 11.9 0 0 1-8.35-2.94q-3.22-2.94-3.22-8.42v-17H238v-7.32h5.13V88.72h10.47v10.13h10v7.32h-10v15.2q0 4.24 3.35 4.25a11.85 11.85 0 0 0 5.13-1.37zm37.48-30q4.62 5.13 4.62 14.31c0 1.09 0 1.94-.07 2.53h-26.42a9.35 9.35 0 0 0 9.51 7.39 13 13 0 0 0 5-1 13.3 13.3 0 0 0 4.31-2.91l5.54 5.61a18.63 18.63 0 0 1-6.81 4.83 22.91 22.91 0 0 1-8.93 1.67 21.2 21.2 0 0 1-10.16-2.33 16.34 16.34 0 0 1-6.71-6.57 21.52 21.52 0 0 1 0-19.68 16.8 16.8 0 0 1 6.71-6.64 20.21 20.21 0 0 1 9.86-2.36q8.92.01 13.55 5.15zm-5.31 10.61a8.34 8.34 0 0 0-2.33-5.82 7.85 7.85 0 0 0-5.82-2.19 8 8 0 0 0-5.71 2.15 10 10 0 0 0-2.91 5.85h16.77zM338.17 132a17.16 17.16 0 0 1-4.55 1.88 19.89 19.89 0 0 1-5 .65 11.88 11.88 0 0 1-8.35-2.94q-3.22-2.94-3.22-8.42v-17h-5.13v-7.32H317V88.72h10.5v10.13h10v7.32h-10v15.2q0 4.24 3.35 4.25a11.85 11.85 0 0 0 5.13-1.37z" />
+  <circle cx="111.62" cy="37.45" r="16.57" />
+  <path d="M75.64 117.89l-12.8 10.61V24.85l12.8-10.61v103.65z" />
+</svg>
+
+🙌 : [Harris Freddy](http://react-navigation-keynote.surge.sh) and [Brent Vatnes](https://www.youtube.com/watch?v=GBhdooVxX6Q) for there presentations

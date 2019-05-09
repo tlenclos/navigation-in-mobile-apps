@@ -34,7 +34,7 @@ export default {
     padding: "80px"
   },
   pre: {
-    fontSize: "14px",
+    fontSize: "16px",
     lineHeight: "1.5px"
   },
   inlineCode: {

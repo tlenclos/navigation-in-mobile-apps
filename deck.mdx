@@ -189,7 +189,7 @@ Try to respect them as closely as possible
 
 ---
 
-<video controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
+<video muted controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
   <source src="assets/example-ios-settings.webm" type="video/webm" />
 </video>
 
@@ -197,7 +197,7 @@ Try to respect them as closely as possible
 
 ---
 
-<video controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
+<video muted controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
   <source src="assets/google-play-example.mp4" type="video/mp4" />
 </video>
 
@@ -205,7 +205,7 @@ Try to respect them as closely as possible
 
 ---
 
-<video controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
+<video muted controls autoPlay loop style={{ height: "90vh", width: "100%" }}>
   <source src="assets/spotify-example.mp4" type="video/mp4" />
 </video>
 
@@ -226,7 +226,7 @@ Try to respect them as closely as possible
 ## How it works on iOS
 
 - Navigation Controller
-- Embeds other view controllers
+- Embeds other views controller
 
 ---
 
@@ -284,9 +284,7 @@ React Navigation
 
 - JavaScript implementation
 - Used to have performance issues
-- Better now with
-
-  [react-native-screens](https://github.com/kmagiera/react-native-screens), [react-native-reanimated](https://github.com/kmagiera/react-native-reanimated) and [react-native-gesture-handler](https://github.com/kmagiera/react-native-gesture-handler)
+- Better now with [react-native-screens](https://github.com/kmagiera/react-native-screens), [react-native-reanimated](https://github.com/kmagiera/react-native-reanimated) and [react-native-gesture-handler](https://github.com/kmagiera/react-native-gesture-handler)
 
 - Contributors from RN and Expo core devs
 - [In depth comparison from Brent Vatne](https://www.youtube.com/watch?v=GBhdooVxX6Q)
@@ -311,7 +309,7 @@ React Navigation
 
 ## React Navigation Playground
 
-<video controls autoPlay loop style={{ height: "75vh", width: "100%" }}>
+<video muted controls autoPlay loop style={{ height: "75vh", width: "100%" }}>
   <source src="assets/react-navigation-playground.mp4" type="video/mp4" />
 </video>
 
@@ -495,7 +493,7 @@ const MyApp = createAppContainer(MyDrawerNavigator);
 
 ## With Redux
 
-<video controls autoPlay loop style={{ height: "600px" }}>
+<video muted controls autoPlay loop style={{ height: "600px" }}>
   <source src="assets/redux-navigation.webm" type="video/webm" />
 </video>
 
@@ -532,6 +530,25 @@ const MyApp = createAppContainer(MyDrawerNavigator);
 />
 
 </Horizontal>
+
+---
+
+## Why not a web app ?
+
+- React Navigation has web support since v3
+
+```jsx
+import { Link } from "react-navigation";
+
+<Link toRoute="Profile" params={{ name: "jamie" }}>
+  Jamie's Profile
+</Link>;
+
+// Will render <a href="/people/jamie">Jamie's Profile</a
+```
+
+- Supports SSR
+- Use with [react-native-web](https://github.com/necolas/react-native-web) to render for the web platform
 
 ---
 

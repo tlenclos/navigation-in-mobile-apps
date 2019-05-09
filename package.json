@@ -5,7 +5,8 @@
   "main": "index.mdx",
   "scripts": {
     "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx"
+    "static": "mkdir -p dist && cp -R assets dist/",
+    "build": "yarn static && mdx-deck build deck.mdx --no-html"
   },
   "author": "",
   "license": "ISC",
